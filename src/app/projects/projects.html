@@ -1,0 +1,57 @@
+<div class="projects-page container">
+  <div class="section-header">
+    <div class="title-wrapper">
+      <h2 class="section-title"><span class="purple">#</span>all projects</h2>
+      <div class="header-line"></div>
+    </div>
+    <a routerLink="/" class="view-all">Back ~~&gt;</a>
+  </div>
+
+  <div class="projects-grid all">
+    <div class="project-card" *ngFor="let project of projects">
+      <div class="project-img">
+        <img [src]="project.img" [alt]="project.title">
+      </div>
+      <div class="project-tech">{{ project.tech }}</div>
+      <div class="project-info">
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.desc }}</p>
+        <div class="project-btns">
+  <a *ngIf="project.link" 
+     [href]="project.link" 
+     target="_blank" 
+     class="btn-live" 
+     style="text-decoration: none; display: inline-block;">
+     Live {{ project.live }}
+  </a>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer class="main-footer">
+  <div class="footer-divider"></div>
+  <div class="footer-container">
+    <div class="footer-left">
+      <div class="brand-top">
+        <span class="logo-name">Maira</span>
+        <span class="email-link">mairameer653@gmail.com</span>
+      </div>
+      <p class="role-desc">Web developer and Ui Ux designer</p>
+    </div>
+
+    <div class="footer-right">
+      <h3></h3>
+      <div class="mobile-socials">
+         <a href="https://github.com/mairaa-m" target="_blank"><img src="github.jpg" alt="Github" height="40px" width="48px"></a>
+        <a href="https://www.linkedin.com/in/maira-meer35/"><img src="linkdin.png" alt="linkedin"  height="30px" width="30px"></a>
+        <a href="https://wa.me/923701050060" target="_blank"><img src="whatsapp.png" alt="whatsapp"  height="40px" width="40px" ></a>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    © Copyright 2026. Made by Maira 
+  </div>
+</footer>

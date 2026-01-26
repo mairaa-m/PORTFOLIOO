@@ -1,0 +1,788 @@
+<style>
+  /* --- Skills Section Root --- */
+.skills-section {
+  padding: 60px 0;
+  background-color: #0b0b0b;
+  overflow: hidden;
+}
+
+.skills-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- Left Side: Console (Sizing Fix) --- */
+.skills-visual {
+  flex: 1;
+  position: relative;
+  width: 100%;
+}
+
+.code-window {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px; /* Desktop size */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.code-header {
+  background-color: #252526;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #111;
+}
+
+.controls { display: flex; gap: 6px; }
+.controls span { width: 8px; height: 8px; border-radius: 50%; }
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
+
+.file-tab {
+  color: #abb2bf;
+  font-size: 11px;
+  font-family: 'Fira Code', monospace;
+}
+
+.code-body {
+  padding: 15px;
+  font-family: 'Fira Code', monospace;
+  font-size: 13px; /* Slightly smaller for better fit */
+  line-height: 1.5;
+}
+
+/* --- Right Side: Skills Grid --- */
+.skills-grid {
+  flex: 1.4;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.skill-box {
+  background: #0d0d0d;
+  border: 1px solid #333;
+  transition: 0.3s ease;
+  height: fit-content;
+}
+
+.skill-header {
+  padding: 6px 10px;
+  border-bottom: 1px solid #333;
+  color: #fff;
+  font-weight: 500;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.skill-content {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-item {
+  font-size: 12px;
+  font-family: 'Fira Code', monospace;
+}
+
+.HTML{color:#E44D26}
+.CSS{color:#1E90FF}
+.JavaScript{color:#F7DF1E}
+.PHP{color:#6C8EBF}
+.CSharp{color:#2ECC71}
+.dotnet{color:#00BFFF}
+
+.MySQL{color:#00A8E8}
+.SQLServer{color:#E74C3C}
+
+.Bootstrap5{color:#0DCAF0}
+.EmailJs{color:#00FFC6}
+
+.VSCode{color:#007ACC}
+.GitHub{color:#fff}
+.Figma{color:#FF5C8D}
+.AITools{color:#39FF14}
+
+.UIUX{color:#FF8C00}
+.Responsive{color:#20E3B2}
+.SEO{color:#FFD700}
+.API{color:#00CED1}
+
+/* Tablet (Max 1024px) */
+@media (max-width: 1024px) {
+  .skills-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr); /* Force 3 columns on tablet */
+    order: 1;
+  }
+
+  .skills-visual {
+    order: 2;
+    max-width: 450px; /* Tablet par console limit */
+  }
+
+  .code-window {
+    max-width: 100%; 
+  }
+}
+
+/* Mobile (Max 768px) */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr); /* Force 2 columns on mobile */
+    gap: 10px;
+  }
+
+  .skills-visual {
+    max-width: 100%; /* Full width but within container padding */
+  }
+
+  .code-window {
+    max-width: 320px; /* iPhone/Android par width control */
+    margin: 0 auto;
+  }
+
+  .code-body {
+    font-size: 11px; /* Text chota kiya taake wrap na ho */
+    padding: 12px;
+  }
+
+  .skill-header {
+    font-size: 12px;
+  }
+
+  .skill-item {
+    font-size: 11px;
+  }
+}
+
+/* Small Mobile (Max 380px) */
+@media (max-width: 380px) {
+  .skills-grid {
+    grid-template-columns: 1fr; /* Bohat chote mobile par 1 column */
+  }
+}
+
+/* --- About Me Section --- */
+.about-section { padding: 60px 0; }
+
+.about-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-text { flex: 1.2; }
+.about-text p {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Creative Code Art (Right Side) */
+.about-code-art {
+  flex: 0.8;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.terminal-mini {
+  background: #1e1e1e;
+  border: 1px solid var(--gray);
+  width: 280px;
+  border-radius: 4px;
+  transform: rotate(2deg); /* Creative Tilt */
+}
+
+.t-head {
+  background: #333;
+  padding: 5px 10px;
+  font-size: 11px;
+  color: var(--gray);
+  border-bottom: 1px solid var(--gray);
+}
+
+.t-body { padding: 15px; font-size: 12px; }
+
+/* --- Responsive Fixes (Mobile/Tablet) --- */
+@media (max-width: 1024px) {
+  /* Container margin lock */
+  .container { padding: 0 50px; }
+
+  .skills-container, .about-flex {
+    flex-direction: column;
+    text-align: left;
+    gap: 30px;
+  }
+
+  /* Patterns sizing down or hiding */
+  .skills-decoration { display: none; }
+  .skills-grid { justify-content: flex-start; }
+  
+  .about-code-art {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .terminal-mini {
+    width: 100%;
+    max-width: 350px;
+    transform: none; /* Mobile par tilt hata diya taake neat lage */
+  }
+
+  .section-title { font-size: 1.5rem; }
+}
+
+@media (max-width: 600px) {
+  /* Spacing fix for very small screens */
+  .container { padding: 0 30px; } /* Thori space kam ki taake content aye */
+  
+  .skill-box {
+    min-width: 45%; /* 2 in one line in skills grid */
+  }
+}
+
+
+
+
+
+/* --- Contacts Section Base --- */
+.contacts-section {
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden; /* Patterns bahar na niklein */
+}
+
+.contacts-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+/* --- Left Side: Info & Console --- */
+.contacts-info-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.contacts-info-side p {
+  color: var(--gray);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 450px;
+}
+
+/* Terminal Style Contact Box */
+.contact-console {
+  border: 1px solid var(--gray);
+  background: var(--background);
+  width: fit-content;
+  min-width: 300px;
+  position: relative;
+  z-index: 2;
+}
+
+.console-header {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--gray);
+  font-weight: 600;
+  color: var(--white);
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.console-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.console-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--gray);
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.console-row:hover {
+  color: var(--white);
+  transform: translateX(5px);
+}
+
+.console-row img {
+  width: 24px;
+  height: 24px;
+}
+
+/* --- Right Side: Form Area --- */
+.contact-form-area {
+  flex: 1;
+  position: relative;
+}
+
+.form-container {
+  border: 1px solid var(--gray);
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 2;
+  position: relative;
+}
+
+/* Input Group Styling */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-family: 'Fira Code', monospace;
+  color: var(--white);
+}
+
+.terminal-input {
+  background: transparent;
+  border: 1px solid var(--gray);
+  padding: 12px;
+  color: var(--white);
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.terminal-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 8px rgba(186, 9, 97, 0.2);
+}
+
+.terminal-input::placeholder {
+  color: #4b5563;
+}
+
+/* Submit Button Style */
+.btn-submit {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--white);
+  padding: 10px 24px;
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.btn-submit:hover {
+  background: rgba(186, 9, 97, 0.1);
+  box-shadow: 4px 4px 0px var(--primary);
+  transform: translate(-2px, -2px);
+}
+
+/* --- Creative Patterns (Side Decorations) --- */
+.dots-pattern {
+  width: 60px;
+  height: 60px;
+  background-image: radial-gradient(var(--gray) 1px, transparent 1px);
+  background-size: 12px 12px;
+  position: absolute;
+  opacity: 0.3;
+}
+
+/* Positioning patterns around contact */
+.dots-left { bottom: -20px; left: -30px; }
+.dots-right { top: -20px; right: -20px; }
+
+.outline-square-decor {
+  width: 100px;
+  height: 100px;
+  border: 1px solid var(--gray);
+  position: absolute;
+  top: 50%;
+  right: -50px;
+  opacity: 0.1;
+  transform: rotate(15deg);
+}
+
+/* --- Mobile & Tablet Responsive --- */
+@media (max-width: 1024px) {
+  .contacts-wrapper {
+    flex-direction: column;
+    gap: 50px;
+    padding: 0 50px; /* Lock side spacing */
+  }
+
+  .contacts-info-side, .contact-form-area {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contact-console {
+    width: 100%; /* Tablet par box bara hojaye ga */
+  }
+
+  .form-container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contacts-wrapper {
+    padding: 0 20px; /* Choti mobile screen par spacing thori kam */
+  }
+  
+  .btn-submit {
+    width: 100%; /* Mobile par button full width */
+    text-align: center;
+  }
+
+  .dots-pattern {
+    display: none; /* Mobile clutter kam karne ke liye patterns hide */
+  }
+}
+/* --- Footer Section --- */
+.main-footer {
+  margin-top: 100px;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 0 var(--side-padding);
+  width: calc(100% - 20%);
+  box-sizing: border-box;
+}
+
+.footer-divider {
+  height: 1px;
+  background: var(--gray);
+  width: calc(100% - 2 * var(--side-padding));
+  margin: 0 var(--side-padding) 35px var(--side-padding);
+  opacity: 0.3;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 30px;
+}
+
+/* Brand Info (Left) */
+.brand-top {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 12px;
+}
+
+.logo-name { font-weight: 600; font-size: 1.2rem; }
+.email-link { color: var(--gray); font-size: 14px; }
+.role-desc { font-size: 14px; color: var(--white); }
+
+/* Media Icons (Horizontal - Right Side) */
+.footer-right h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.media-icons {
+  display: flex; /* Makes icons horizontal */
+  gap: 16px;     /* Space between icons */
+}
+
+.media-icons img {
+  width: 24px;
+  filter: grayscale(1);
+  transition: 0.3s;
+}
+
+.media-icons a:hover img {
+  filter: grayscale(0);
+}
+
+.copyright {
+  text-align: center;
+  color: var(--gray);
+  font-size: 13px;
+  margin-top: 50px;
+}
+
+/* --- Responsive for Mobile --- */
+@media (max-width: 1024px) {
+  .contacts-flex, .footer-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .media-icons {
+    margin-top: 10px;
+  }
+}
+
+
+ .nav-links.open { right: 0; }
+  .mobile-socials { display: flex; gap: 20px; }
+
+
+  .color-bluee { color: rgb(113, 231, 252); }
+
+    .color-yellow { color: yellow; }
+
+    
+</style>
+<nav class="navbar">
+    <div class="logo"><span class="purple" style="color: #ba0961; gap: 0.2%;"># </span>Maira Meer</div>
+    <div class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    <ul class="nav-links" [class.open]="isMenuOpen">
+      <li><a href="#" (click)="toggleMenu()"><span class="purple" style="color: #ba0961;">#</span>home</a></li>
+      <li><a href="#works" (click)="toggleMenu()"><span class="purple" style="color: #ba0961;">#</span>works</a></li>
+      <li><a href="#about" (click)="toggleMenu()"><span class="purple" style="color: #ba0961;">#</span>about-me</a></li>
+      <div class="mobile-socials">
+        <a href="https://github.com/mairaa-m" target="_blank"><img src="github.jpg" alt="Github" height="40px" width="48px"></a>
+        <a href="https://www.linkedin.com/in/maira-meer35/"><img src="linkdin.png" alt="Dribbble"  height="30px" width="30px"></a>
+        <a href="https://wa.me/923701050060" target="_blank"><img src="whatsapp.png" alt="whatsapp"  height="40px" width="40px" ></a>
+      </div>
+    </ul>
+  </nav>
+
+<div class="container main-layout">
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Maira Meer <span class="purple" style="color: #ba0961;">Web designer</span> and <span class="purple" style="color: #ba0961;">full-stack Web developer</span></h1>
+      <p>I create responsive websites using frontend and backend technologies and aspire to be the problem solver.</p>
+      <a href="#contactss" class="btn-contact">Hire me!</a>
+    </div>
+    <div class="hero-creative">
+      <div class="terminal-box">
+        <div class="terminal-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="purple">const</span> <span class="white">skills</span> = {{ '{' }}</p>
+          <p>&nbsp;&nbsp;frontend: [<span class="green">'Angular'</span>, <span class="green">'Html'</span>, <span class="green">'Js'</span>]</p>
+          <p>&nbsp;&nbsp;Backend: [<span class="color-bluee">'.Net'</span>, <span class="color-bluee">'Php'</span>]</p>
+           <p>&nbsp;&nbsp;Database: [<span class="color-yellow">'sql server'</span>]</p>
+          <p>{{ '}' }};</p>
+        </div>
+      </div>
+      <div class="status-box">
+        <div class="purple-square"></div>
+        <span>Currently working on <strong class="white">Portfolio</strong></span>
+      </div>
+    </div>
+  </section>
+
+ <section class="projects-section" id="works">
+  <div class="container">
+    <div class="section-header">
+      <div class="title-wrapper">
+        <h2 class="section-title"><span class="purple" style="color: #ba0961;">#</span>projects</h2>
+        <div class="header-line"></div>
+      </div>
+      <a routerLink="/projects" class="view-all">View all ~~></a>
+    </div>
+
+    <div class="projects-grid" margin-top="-20px">
+      <div class="project-card" *ngFor="let project of mainProjects; let i = index" 
+           [class.hide-on-mobile]="i >= 2" 
+           [class.hide-on-tablet]="i >= 3">
+        
+        <div class="project-img">
+          <img [src]="project.img" [alt]="project.title">
+        </div>
+        
+        <div class="project-tech">
+          {{ project.tech }}
+        </div>
+        
+        <div class="project-info">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.desc }}</p>
+          <div class="project-btns">
+           <a href="{{project.link}}" target="_blank"> <button class="btn-live">Live {{ project.live }}</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="skills-section" id="skills">
+  <div class="section-header">
+    <div class="title-wrapper">
+      <h2 class="section-title"><span class="purple">#</span>skills</h2>
+      <div class="header-line"></div>
+    </div>
+  </div>
+
+  <div class="skills-container">
+    <div class="skills-visual">
+      <div class="code-window">
+        <div class="code-header">
+          <div class="controls">
+            <span class="dot-red"></span>
+            <span class="dot-yellow"></span>
+            <span class="dot-green"></span>
+          </div>
+          <div class="file-tab">skills.json</div>
+        </div>
+        <div class="code-body">
+          <pre><code><span class="purple">{{ '{' }}</span>
+  <span class="cyan">"status"</span>: <span class="green">"ok..."</span>,
+  <span class="cyan">"mastery"</span>: <span class="purple">[</span>
+    <span class="green">"Angular"</span>, <span class="green">"React"</span>,
+    <span class="green">".NET"</span>, <span class="green">"php"</span>
+  <span class="purple">]</span>,
+  <span class="cyan">"location"</span>: <span class="green">"Remote"</span>
+<span class="purple">{{ '}' }}</span></code></pre>
+        </div>
+      </div>
+      <div class="dots-grid-skills"></div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-box" *ngFor="let skill of skillsData">
+        <div class="skill-header">{{ skill.title }}</div>
+        <div class="skill-content">
+          <span *ngFor="let item of skill.items" [class]="item" class="skill-item">
+            {{ item }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="about-section" id="about-me">
+  <div class="section-header">
+    <div class="title-wrapper">
+      <h2 class="section-title"><span class="purple">#</span>about-me</h2>
+      <div class="header-line"></div>
+    </div>
+  </div>
+
+  <div class="about-flex">
+    <div class="about-text">
+      <p>Hello, i'm Maira!</p>
+      <p>I'm a prefessional webdesigner and full stack developer who is interested in creating interactive and responsive websites for business owners their ecommerce store.</p>
+      <p>I help you creating fast, responsive frontend and backend websites using clean code and pixel perfect design.</p>
+      <button class="btn-live">Read more -></button>
+    </div>
+
+    <div class="about-code-art">
+      <div class="terminal-mini">
+        <div class="t-head"><span>about_me.js</span></div>
+        <div class="t-body">
+          <p><span class="purple">function</span> <span class="white">init</span>() {{ '{' }}</p>
+          <p>&nbsp;&nbsp;<span class="gray">// Creative logic...</span></p>
+          <p>&nbsp;&nbsp;console.<span class="green">log</span>(<span class="white">"Hello World"</span>);</p>
+          <p>{{ '}' }}</p>
+        </div>
+      </div>
+      <div class="dots-pattern-side"></div>
+    </div>
+  </div>
+</section>
+
+<section class="contacts-section" id="contacts" id="contactss">
+  <div class="section-header">
+    <div class="title-wrapper">
+      <h2 class="section-title"><span class="purple">#</span>contacts</h2>
+      <div class="header-line"></div>
+    </div>
+  </div>
+
+  <div class="contacts-wrapper" >
+    <div class="contacts-info-side">
+      <p class="gray">I'm a professional webdeveloper who helps you by creating fast, responsive frontend and backend websites using clean code and pixel perfect design. I'm and interested in freelance opportunities. For any guidance and problem, feel free to contact me.</p>
+    
+    </div>
+
+    <div class="contact-form-area">
+      <div class="form-container">
+        <div class="input-group">
+          <label class="purple">> <span class="white">email:</span></label>
+          <input type="email" placeholder="yourname@example.com" class="terminal-input">
+        </div>
+        
+        <div class="input-group">
+          <label class="purple">> <span class="white">message:</span></label>
+          <textarea placeholder="Type your message here..." class="terminal-input" rows="5"></textarea>
+        </div>
+
+        <button class="btn-submit">
+          send_message();
+        </button>
+      </div>
+
+      <div class="dots-pattern form-dots"></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<footer class="main-footer">
+  <div class="footer-divider"></div>
+  <div class="footer-container">
+    <div class="footer-left">
+      <div class="brand-top">
+        <span class="logo-name">Maira</span>
+        <span class="email-link">mairameer653@gmail.com</span>
+      </div>
+      <p class="role-desc">Web developer and Ui Ux designer</p>
+    </div>
+
+    <div class="footer-right">
+      <h3></h3>
+      <div class="mobile-socials">
+         <a href="https://github.com/mairaa-m" target="_blank"><img src="github.jpg" alt="Github" height="40px" width="48px"></a>
+        <a href="https://www.linkedin.com/in/maira-meer35/"><img src="linkdin.png" alt="linkedin"  height="30px" width="30px"></a>
+        <a href="https://wa.me/923701050060" target="_blank"><img src="whatsapp.png" alt="whatsapp"  height="40px" width="40px" ></a>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    © Copyright 2026. Made by Maira 
+  </div>
+</footer>
